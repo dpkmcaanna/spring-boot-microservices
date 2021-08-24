@@ -1,7 +1,9 @@
 server:
-  port: 8081
+  port: 8082
 
 spring:
+  application:
+    name: order-service
   jpa:
     show-sql: true
     hibernate:
@@ -14,4 +16,18 @@ spring:
     username: foo
     password: bar
     driverClassName: org.h2.Driver
-                    
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+  sleuth:
+    circuitbreaker: 
+      enabled: false
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
+
+logging:
+  level:
+    com.order.service: INFO             

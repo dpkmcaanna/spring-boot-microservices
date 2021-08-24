@@ -1,9 +1,9 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   application:
-    name: product-service
+    name: inventory-service
   jpa:
     show-sql: true
     hibernate:
@@ -12,20 +12,15 @@ spring:
         hibernate:
           dialect: org.hibernate.dialect.H2Dialect
   datasource:
-    url: jdbc:h2:file:./data/product
+    url: jdbc:h2:file:./data/inventory-service
     username: foo
     password: bar
     driverClassName: org.h2.Driver
-       
+
 eureka:
   instance:
     instance-id: ${spring.application.name}:${random.uuid}
 
-management:
-  endpoints:
-    web:
-      exposureinclude: "*"
-
 logging:
   level:
-    com.product.service: INFO
+    com.inventory.service: INFO
