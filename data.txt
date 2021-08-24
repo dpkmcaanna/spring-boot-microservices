@@ -1,0 +1,11 @@
+{
+    "name": "Elements of Programming Interview",
+    "description": "Algorithms and Data structure Program and Solutions",
+    "price": 1299.99
+}
+
+{
+    "name": "Laptop",
+    "description": "Dell Inspiron 5000",
+    "price": 55002
+}
