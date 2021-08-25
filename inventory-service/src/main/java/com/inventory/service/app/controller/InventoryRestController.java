@@ -1,6 +1,7 @@
 package com.inventory.service.app.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,12 +26,27 @@ public class InventoryRestController {
 
     private final InventoryRepository inventoryRepository;
 
-    @GetMapping("/{skuCode}")
+    @GetMapping("/skuCode/{skuCode}")
     Boolean isInStock(@PathVariable String skuCode) {
         log.info("Checking stock for product with skucode - " + skuCode);
         Inventory inventory = inventoryRepository.findBySkuCode(skuCode)
                 .orElseThrow(() -> new RuntimeException("Cannot Find Product by sku code " + skuCode));
         return inventory.getStock() > 0;
+    }
+    
+    @GetMapping("/id/{id}")
+    ResponseEntity<Inventory> findById(@PathVariable Long id) {
+        log.info("Checking stock for product with Id - " + id);
+        Inventory inventory = inventoryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cannot Find Product by id " + id));
+        return ResponseEntity.ok(inventory);
+    }
+    
+    @RequestMapping
+    ResponseEntity<List<Inventory>> findAll() {
+    	 log.info("Checking entire enventory stock ");
+    	 List<Inventory> listsInventories = inventoryRepository.findAll();
+    	 return ResponseEntity.ok(listsInventories);
     }
     
     @PostMapping

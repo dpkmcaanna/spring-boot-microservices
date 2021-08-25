@@ -3,6 +3,7 @@ package com.product.service.app.conroller;
 import java.net.URI;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,11 @@ public class ProductRestController {
  
     private final ProductRepository productRepository;
  
+    @GetMapping("/meesage")
+    ResponseEntity<String> getMessage(@Value("${product-service.app.message}")String message) {
+    	return ResponseEntity.ok(message);
+    }
+    
     @GetMapping
     public List<Product> getAllProducts() {
         return productRepository.findAll();

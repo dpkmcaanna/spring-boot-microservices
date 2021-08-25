@@ -2,8 +2,6 @@ server:
   port: 8080
 
 spring:
-  application:
-    name: product-service
   jpa:
     show-sql: true
     hibernate:
@@ -24,8 +22,14 @@ eureka:
 management:
   endpoints:
     web:
-      exposureinclude: "*"
+      exposure:
+        include: refresh
 
 logging:
   level:
-    com.product.service: INFO
+    root: INFO
+    com.product.service: ERROR
+
+product-service:
+  app:
+    message: test message

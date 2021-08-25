@@ -2,8 +2,6 @@ server:
   port: 8082
 
 spring:
-  application:
-    name: order-service
   jpa:
     show-sql: true
     hibernate:
@@ -30,4 +28,5 @@ eureka:
 
 logging:
   level:
+    root: INFO
     com.order.service: INFO             

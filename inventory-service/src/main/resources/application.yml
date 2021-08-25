@@ -2,8 +2,6 @@ server:
   port: 8081
 
 spring:
-  application:
-    name: inventory-service
   jpa:
     show-sql: true
     hibernate:
@@ -23,4 +21,5 @@ eureka:
 
 logging:
   level:
+    root: ERROR
     com.inventory.service: INFO

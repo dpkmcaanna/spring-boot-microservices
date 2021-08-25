@@ -24,6 +24,8 @@
 		<module>order-service</module>
 		<module>inventory-service</module>
 		<module>discovery-server</module>
+		<module>notification-service</module>
+		<module>confi-server</module>
 	</modules>
 
 	<dependencyManagement>

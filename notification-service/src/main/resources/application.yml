@@ -1,0 +1,27 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: notification-service
+  cloud:
+    stream:
+      bindings:
+        notificationEventSupplier-in-0:
+          destination: notification-events
+  sleuth: 
+    integration: 
+      enabled: true
+    sampler: 
+      probability: 1
+  zipkin: 
+    base-url: http://localhost:9411/
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
+
+logging:
+  level:
+    root: ERROR
+    com.inventory.service: INFO
